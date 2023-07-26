@@ -3406,7 +3406,7 @@ GDKPd:SetScript("OnEvent", function(self, event, ...)
 				end
 			end
 			if self.curAuction.item and msg:find("%d+") == 1 then
-				local newBid = tonumber(msg:match("([0-9]+%.?[0-9]*)[kK]"))
+				local newBid = tonumber(msg:match("([0-9]+[\\.|\\,]?[0-9]*)[kK]"))
 				if not newBid then
 					newBid = tonumber(msg:match("%d+"))
 				else
@@ -3541,7 +3541,7 @@ GDKPd:SetScript("OnEvent", function(self, event, ...)
 					self.ignoredLinks[itemLink] = nil
 				end
 			end
-			local bidItemLink, bidAmount = msg:match("(|c........|Hitem:.+|r)%s*([0-9]+%.?[0-9]*)[kK]")
+			local bidItemLink, bidAmount = msg:match("(|c........|Hitem:.+|r)%s*([0-9]+[\\.|\\,]?[0-9]*)[kK]")
 			if not bidItemLink then
 				bidItemLink, bidAmount = msg:match("(|c........|Hitem:.+|r)%s*(%d+)")
 			else
